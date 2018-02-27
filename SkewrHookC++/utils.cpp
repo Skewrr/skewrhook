@@ -34,6 +34,12 @@ void showcursor(bool status)
 	SetConsoleCursorInfo(consoleHandle, &info);
 }
 
+void coloured(std::string text, int colour) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colour);
+	cout << text;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+}
+
 int menu(std::string *list, int sizeoflist) {
 	int pos = 0;
 	int key = 0;
@@ -45,15 +51,13 @@ int menu(std::string *list, int sizeoflist) {
 		if (pos > sizeoflist - 1) { pos = 0; }
 		if (pos < 0) { pos = sizeoflist - 1; }
 		for (int i = 0; i < sizeoflist; i++) {
-			for (int j = 0; j < (getConsoleSize()[1] / 2) - (list[i].length() / 2); j++)
+			for (int j = 0; j < (getConsoleSize()[1] / 2) - (list[i].length()  / 2); j++)
 				cout << " ";
 			if (i == pos) {
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
-				cout << "-> " << list[i] << endl << endl;
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+				coloured("-> " + list[i] + "\n\n", colours.light_purple);
 			}
 			else {
-				cout << "   " << list[i] << endl << endl;
+				cout << "   " << list[i] << "\n\n";
 			}
 		}
 

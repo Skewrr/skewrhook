@@ -9,9 +9,9 @@ int main()
 {
 	std::string uname;
 	std::string passw;
-	std::string list[4] = { "Rainbow","Option 2","Option 3","Option 4" };
+	std::string list[4] = { "Rainbow","Option 2","Option 3","Quit" };
 
-	cout << "--- SKEWRHOOK ---\n\n";
+	coloured("--- SKEWRHOOK ---\n\n", colours.light_red);
 	cout << "Username: ";
 	cin >> uname;
 	cout << "Password: ";
@@ -22,7 +22,7 @@ int main()
 
 		switch (menu(list, 4)) {
 		case 0:
-			cout << "rainbow";
+			cout << "rainbow text";
 			char hex[20];
 			while(1)
 				for (int i = 0; i < 16; i++) {
@@ -32,10 +32,11 @@ int main()
 					if (GetAsyncKeyState(VK_ESCAPE)) { system("color f && cls"); return main(); }
 					Sleep(10);
 				}
+
+		case 4:
+			exit(0);
 		}
 	}
-
-	system("pause");
 	return 0;
 
 }
