@@ -2,7 +2,7 @@
 Edgy and cool program
 
 
-### Features
+## Features
 
 * Login Screen
 * Scrolling Menu
