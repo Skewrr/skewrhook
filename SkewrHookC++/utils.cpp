@@ -1,8 +1,9 @@
 #include <conio.h>
 #include <iostream>
-#include <string>
 #include <windows.h>
 #include "utils.h"
+
+COLOURS colours;
 
 std::string passinput() {
 	int c;
@@ -46,12 +47,12 @@ int menu(std::string *list, int sizeoflist) {
 	while (1) {
 		showcursor(FALSE);
 		system("cls");
-		for (int i = 0; i < (getConsoleSize()[0] / 2) - sizeoflist; i++)
+		for (int i = 0; i < (getConsoleSize()[0] / 2) - sizeoflist - (pos * 2); i++)
 			cout << "\n";
 		if (pos > sizeoflist - 1) { pos = 0; }
 		if (pos < 0) { pos = sizeoflist - 1; }
 		for (int i = 0; i < sizeoflist; i++) {
-			for (int j = 0; j < (getConsoleSize()[1] / 2) - (list[i].length()  / 2); j++)
+			for (int j = 0; j < (getConsoleSize()[1] / 2) - ((int)list[i].length()  / 2); j++)
 				cout << " ";
 			if (i == pos) {
 				coloured("-> " + list[i] + "\n\n", colours.light_purple);

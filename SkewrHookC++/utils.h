@@ -27,7 +27,7 @@ struct COLOURS {
 	int bright_white = 15;
 };
 
-COLOURS colours;
+extern COLOURS colours;
 
 using std::cout;
 using std::cin;
